@@ -14,7 +14,7 @@ Plot('vel',
 
 Flow('shots','vel',
 	'''
-	/home/wyw/fwi/FWIonGPU/cpu-version/sfmodeling2d csdgather=n fm=10 amp=1 dt=0.0015
+	sfmodeling2d csdgather=n fm=10 amp=1 dt=0.0015
 	 ns=21 ng=767 nt=2800 sxbeg=4 szbeg=2 jsx=37 jsz=0 gxbeg=0 gzbeg=3 jgx=1 jgz=0
 	''')
 
@@ -40,7 +40,7 @@ Plot('marm','vel smvel','TwoRows')
 # use the over-smoothed model as initial model for FWI
 Flow('vsnaps grads objs illums','smvel shots',
 	'''
-	/home/wyw/fwi/FWIonGPU/cpu-version/sffwi2d shots=${SOURCES[1]} grads=${TARGETS[1]} 
+	sffwi2d shots=${SOURCES[1]} grads=${TARGETS[1]} 
 	objs=${TARGETS[2]} illums=${TARGETS[3]} niter=300 precon=y
 	''')
 Plot('vsnaps',
