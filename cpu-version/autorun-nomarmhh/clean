@@ -1,0 +1,3 @@
+#!/bin/bash
+rm *vpl *rsf time 
+rm -r Fig
