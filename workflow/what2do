@@ -1,0 +1,71 @@
+2017/5/5
+需要读他的几分代码
+
+========================================================
+1.2d 正演（一般和openmp）
+
+
+7) 2-D forward modeling to generate shot records
+
+Main: 		Mmodeling2d.c
+
+Test file: 	/book/xjtu/test/modeling2d/SConstruct
+
+3) 2-D and 3-D FD for forward modelling
+
+Main:		MTestfd2d.c, MTestfd3d.c
+
+Test file:	/book/xjtu/test/Testfd3d/SConstruct
+			/book/xjtu/test/Testfd2d/SConstruct
+
+
+=======================================================
+2. 3d正演gpu
+
+14) 3D FD using GPU
+
+Main: 		Mgpufd3d.cu, Mgpufbrec3d.cu
+	
+	Mgpurtm3d.cu (random boundary condition, under construction)
+
+Test file:	/book/xjtu/test/gpufd3d/SConstruct
+
+NB: Mgpufbrec3d.cu is performing backward reconstruction for the forward 
+modeled wavefield in 3D with GPU. 
+
+========================================================
+3.fwigpu
+
+11) 2D GPU-based full waveform inversion (FWI)
+
+Main:		Mgenshots.cu, Mfbrec.cu,Mgpufwi.cu,
+
+Test file:	/book/xjtu/gpufwi/fbrec/SConstruct
+			/book/xjtu/gpufwi/speedup/SConstruct
+		
+	/book/xjtu/gpufwi/marmtest/SConstruct
+
+For comparison, check the serial versions:
+	 
+	Mmodeling.c, Mfwi2d.c, Mfbrec2d.c, Mmpifwi.c, Mmpigpufwi.c 
+
+Note: Mgenshots.cu is used to generate shots by forward modeling using
+the exact velocity model. We can use a starting model to do FWI by
+invoking Mgpufwi.cu. We are using boundary saving strategy in FWI. To 
+demonstrate that the modeled wavefield can be precisely reconstructed,
+we design the code Mfbrec.cu befere going to FWI. It is important to
+note that the top boundary is free surface boundary condition (no ABC 
+applied here!). 
+
+下载安装最新的madagascar后都能用，接下来模仿这个gpu版本学写加速算法，然后读组里的fwi算法，考虑如何修改，至于如何运行的问题
+
+
+
+
+	|----bin（自己写的）
+home----|
+	|
+
+
+======to read  the cuda code and learn
+
