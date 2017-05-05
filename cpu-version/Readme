@@ -18,3 +18,7 @@ flow
 someplace you may have to modify
 	1. makefile
 	2. sconstruct
+
+warrning:
+	you don't need the sfmodeling2d and sffwi2d run by yourself.
+they are compiled by madagascar
